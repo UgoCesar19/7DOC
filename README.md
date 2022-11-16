@@ -21,6 +21,10 @@ After you are registered, you could get your API_KEY in your profile page.
 
 ## Change log
 
+### 5th day:
+Encapsulation revision. All classes are already defined to better delegate and **encapsulate** the responsabilities.
+Changed the annotation from the rest client from @Service to @Componnent, according to the chalenge proposition.
+
 ### 4th day:
 A home page using thymeleaf was created.
 
