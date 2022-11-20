@@ -21,6 +21,12 @@ After you are registered, you could get your API_KEY in your profile page.
 
 ## Change log
 
+### Extra:
+Implemented some user interface with basic navigation functionality.
+Added to the project home an search form with an additional possibility of search (by movie crew).
+The form was still constructed in Thymeleaf and based on bootstrap samples.
+The movies card model changed too. Now there is a button on the card header that makes possible to add the movie to favorites list.
+
 ### 7th day:
 Implemented the functionality of add movie to favorites, by clicking in the movie image.
 Created a test that consumes our controllers, add 3 movies for favorites and get the page with the favorited movies.

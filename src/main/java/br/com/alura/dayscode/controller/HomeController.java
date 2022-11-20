@@ -40,7 +40,13 @@ public class HomeController {
 	private List<Movie> favoriteMovies = new ArrayList<>();
 	
 	@GetMapping("home")
-	public String home(@RequestParam String apiKey, @RequestParam(required = false) String title,  Model model) {
+	public String home(Model model) {
+		model.addAttribute("ui", "home");
+		return "home";
+	}
+	
+	@GetMapping("search")
+	public String search(@RequestParam String apiKey, @RequestParam(required = false) String title, @RequestParam(required = false) String crew, Model model) {
 		
 		if (topMovies.size() == 0) {
 			String imdbResourceUrl = imdbApiBase + imdbApiTop + apiKey;
@@ -58,33 +64,41 @@ public class HomeController {
 			filteredMovies = topMovies;
 		}
 		
+		if (Objects.nonNull(crew)) {
+			filteredMovies = filteredMovies.stream().filter(movie -> 
+				movie.getCrew().toUpperCase().contains(crew.toUpperCase())
+			).collect(Collectors.toList());
+		}
+		
 		model.addAttribute("movies", filteredMovies);
 		
-		return "home"; 
+		model.addAttribute("ui", "search");
+		
+		return "search";
 	}
 	
-	@GetMapping("favoritos")
+	@GetMapping("favorites")
 	public String favoritos(Model model) {
 		
 		favoriteMovies = topMovies.stream().filter(movie -> movie.getFavorito() == 1).collect(Collectors.toList());
 		
 		model.addAttribute("movies", favoriteMovies);
+		model.addAttribute("ui", "favorites");
 		
-		return "home";
+		return "search";
 		
 	}
 	
-	@GetMapping("favoritos/{movieId}")
+	@GetMapping("favorites/{movieId}")
 	public RedirectView adicionarFavorito(@PathVariable String movieId) {
 		Optional<Movie> favorite = topMovies.stream().filter(movie -> movie.getId().equalsIgnoreCase(movieId)).findFirst();
 		
 		if (favorite.isPresent()) {
-            topMovies.get(topMovies.indexOf(favorite.get())).setFavorito(1);
+			int favoriteStatus = (favorite.get().getFavorito() + 1) % 2;
+            topMovies.get(topMovies.indexOf(favorite.get())).setFavorito(favoriteStatus);
         }
 		
-		return new RedirectView("/favoritos");
+		return new RedirectView("/favorites");
 	}
-	
-	
 	
 }

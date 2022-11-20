@@ -33,15 +33,15 @@ class HomeControllerTest {
 		
 		ResponseEntity<String> response = myAppClient.request(resource, HttpMethod.GET, String.class);
 		
-		String favorite1 = "http://localhost:" + port + "/favoritos/tt0111161";
-		String favorite2 = "http://localhost:" + port + "/favoritos/tt0068646";
-		String favorite3 = "http://localhost:" + port + "/favoritos/tt10872600";
+		String favorite1 = "http://localhost:" + port + "/favorites/tt0111161";
+		String favorite2 = "http://localhost:" + port + "/favorites/tt0068646";
+		String favorite3 = "http://localhost:" + port + "/favorites/tt10872600";
 		
 		response = myAppClient.request(favorite1, HttpMethod.GET, String.class);
 		response = myAppClient.request(favorite2, HttpMethod.GET, String.class);
 		response = myAppClient.request(favorite3, HttpMethod.GET, String.class);
 		
-		String favorites = "http://localhost:" + port + "/favoritos";
+		String favorites = "http://localhost:" + port + "/favorites";
 		
 		response = myAppClient.request(favorites, HttpMethod.GET, String.class);
 		

@@ -1,0 +1,18 @@
+<html>
+	<head th:replace="~{cabecalho :: head}"></head>
+	<body>
+		<div th:replace="~{cabecalho :: cabecalho2}"></div>
+		<div class="card text-white bg-dark mb-3" style="max-width: 25%;" th:each="movie : ${movies}">
+			<h4 class="card-header">
+				<div class="row justify-content-between">
+					<span class="col-12 col-sm-8" th:text="${movie.title}">Movie Title</span>
+					<a th:href="@{/favorites/{movieId}(movieId=${movie.id})}"><th:block th:switch="${movie.favorito}"><button type="button" th:case="0" class="btn btn-secondary">Favorite</button><button type="button" th:case="1" class="btn btn-warning">Favorito</button></th:block></a>
+				</div>
+			</h4>
+			<div class="card-body">
+				<img class="card-img" th:src="${movie.image}" th:alt="${movie.title}"/>
+				<p class="card-text mt-2">Rating: <span th:text="${movie.imDbRating}">Rating</span> - Year: <span th:text="${movie.year}">Year</span></p>
+			</div>
+		</div>
+	</body>
+</html>
