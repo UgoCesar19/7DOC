@@ -13,6 +13,7 @@ public class Movie {
 	private String crew;
 	private String imDbRating;
 	private String imDbRatingCount;
+	private int favorito;
 	
 	public String getId() {
 		return id;
@@ -50,9 +51,17 @@ public class Movie {
 		return imDbRatingCount;
 	}
 
+	public int getFavorito() {
+		return favorito;
+	}
+
+	public void setFavorito(int favorito) {
+		this.favorito = favorito;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(crew, fullTitle, id, imDbRating, imDbRatingCount, image, rank, title, year);
+		return Objects.hash(crew, favorito, fullTitle, id, imDbRating, imDbRatingCount, image, rank, title, year);
 	}
 
 	@Override
@@ -64,8 +73,9 @@ public class Movie {
 		if (getClass() != obj.getClass())
 			return false;
 		Movie other = (Movie) obj;
-		return Objects.equals(crew, other.crew) && Objects.equals(fullTitle, other.fullTitle)
-				&& Objects.equals(id, other.id) && Objects.equals(imDbRating, other.imDbRating)
+		return Objects.equals(crew, other.crew) && favorito == other.favorito
+				&& Objects.equals(fullTitle, other.fullTitle) && Objects.equals(id, other.id)
+				&& Objects.equals(imDbRating, other.imDbRating)
 				&& Objects.equals(imDbRatingCount, other.imDbRatingCount) && Objects.equals(image, other.image)
 				&& Objects.equals(rank, other.rank) && Objects.equals(title, other.title)
 				&& Objects.equals(year, other.year);
@@ -75,7 +85,7 @@ public class Movie {
 	public String toString() {
 		return "Movie [id=" + id + ", rank=" + rank + ", title=" + title + ", fullTitle=" + fullTitle + ", year=" + year
 				+ ", image=" + image + ", crew=" + crew + ", imDbRating=" + imDbRating + ", imDbRatingCount="
-				+ imDbRatingCount + "]";
+				+ imDbRatingCount + ", favorito=" + favorito + "]";
 	}
 	
 }

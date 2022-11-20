@@ -8,7 +8,7 @@
 		<div class="card text-white bg-dark mb-3" style="max-width: 25%;" th:each="movie : ${movies}">
 			<h4 class="card-header" th:text="${movie.title}">Título do Filme</h4>
 			<div class="card-body">
-				<img class="card-img" th:src="${movie.image}" th:alt="${movie.title}">
+				<a th:href="@{/favoritos/{movieId}(movieId=${movie.id})}"><img class="card-img" th:src="${movie.image}" th:alt="${movie.title}"/></a>
 				<p class="card-text mt-2">Nota: <span th:text="${movie.imDbRating}">Nota</span> - Ano: <span th:text="${movie.year}">Ano</span></p>
 			</div>
 		</div>

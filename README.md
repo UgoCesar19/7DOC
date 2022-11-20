@@ -21,6 +21,13 @@ After you are registered, you could get your API_KEY in your profile page.
 
 ## Change log
 
+### 7th day:
+Implemented the functionality of add movie to favorites, by clicking in the movie image.
+Created a test that consumes our controllers, add 3 movies for favorites and get the page with the favorited movies.
+
+### 6th day:
+Added the possibility of movie filtering using the param "title": &title=movie_title_for_searsh.
+
 ### 5th day:
 Encapsulation revision. All classes are already defined to better delegate and **encapsulate** the responsabilities.
 Changed the annotation from the rest client from @Service to @Componnent, according to the chalenge proposition.
